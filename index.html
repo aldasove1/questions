@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hearts Background</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffedf0;
+            overflow: hidden;
+        }
+
+        h1 {
+            position: absolute;
+            top: 10%;
+            text-align: center;
+            color: #ff165d;
+            font-size: 2.5rem;
+            z-index: 10;
+        }
+
+        .button {
+            position: absolute;
+            top: 60%;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #ff6f91;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background-color 0.3s;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .button:hover {
+            background-color: #ff3d68;
+            transform: translateY(-3px);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button.no {
+            top: 70%;
+            background-color: #6f91ff;
+        }
+
+        .button.no:hover {
+            background-color: #3d68ff;
+        }
+
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6f91;
+            transform: rotate(-45deg);
+            animation: float 5s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6f91;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 25px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1) rotate(-45deg);
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.5) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Прекрасные девушки из Ш Ш Ш вы готовы ответить на несколько вопросов про мальчиков?</h1> 
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSePKNpfGV7LEUbwFv3OxW5W6XWZO0aCaPaf7owSA7G9094AKA/viewform?usp=header" class="button">Да</a>
+    <a href="https://yandex.kz/images/search?from=tabbar&img_url=https%3A%2F%2Fscontent-hel3-1.cdninstagram.com%2Fv%2Ft51.2885-15%2F47694821_777224399318972_8458370953027480719_n.jpg%3Fstp%3Ddst-jpg_e15_fr_s1080x1080%26_nc_ht%3Dscontent-hel3-1.cdninstagram.com%26_nc_cat%3D108%26_nc_ohc%3DEd8jNr_eWZkAX8Fwe7W%26edm%3DAABBvjUBAAAA%26ccb%3D7-4%26oh%3D00_AT8aG_v2BHOIdPHsrqjxn7QdLUF8_gzfHDNQ1EwYSMabdw%26oe%3D620B2BC7%26_nc_sid%3D83d603&lr=29445&pos=0&rpt=simage&text=факю" class="button no">Нет</a>
+
+    <script>
+        // Create animated hearts
+        const body = document.body;
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Between 3s and 5s
+            body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Remove heart after animation
+        }
+
+        setInterval(createHeart, 300); // Create a heart every 300ms
+    </script>
+</body>
+</html>
+
